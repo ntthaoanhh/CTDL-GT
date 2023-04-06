@@ -1,0 +1,32 @@
+//Cho mảng 1 chiều các số thực. Hãy viết hàm đệ quy đếm số lượng giá trị dương có trong mảng
+#include<stdio.h>
+#include<math.h>
+void nhap(float a[], int &n ){
+ 	printf("Nhap so phan tu : ");
+	scanf("%d", &n);
+ 	for(int i = 0; i < n; i++) {
+ 		printf("a[%d] = ", i + 1);
+ 		scanf("%f", &a[i]);
+	}
+}
+void xuat(float a[], int n){
+for(int i = 0; i < n; i++){
+    printf("%8.2f", a[i]);
+    }
+}
+int DemSoDuong(float a[], int n){
+    if(n==0)
+    return 0;
+    if(a[n-1]>0)
+    return 1+DemSoDuong(a,n-1);
+    return DemSoDuong(a,n-1);
+}
+int main(){
+    float a[100];
+    int n;
+    nhap(a,n);
+    printf("\nCac so vua nhap la :");
+    xuat(a,n);
+    int Dem=DemSoDuong(a,n);
+    printf("\nTrong do co %d so duong trong mang", Dem);
+}
